@@ -28,7 +28,7 @@ train_op = optimizer.minimize(cost)
 with tf.Session() as sess:#끝나면 알아서 세션 닫음
     sess.run(tf.global_variables_initializer())
 
-    for step in range(4000):#학습 400번 하면서 감소하는 cost 출력
+    for step in range(4000):#학습 4000번 하면서 감소하는 cost 출력
         _, cost_val = sess.run([train_op, cost], feed_dict={X:x_data, Y:y_data})
         print(step, cost_val, sess.run(W), sess.run(b))
 
