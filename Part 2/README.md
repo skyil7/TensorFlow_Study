@@ -13,7 +13,7 @@
 W를 한 층 더 넣어주면 되는데, 이걸 100층씩 만들려면 노가다니까 뭔가 방법이 있을 것 같다.
 
 
-##교차 엔트로피 함수
+## 교차 엔트로피 함수
 ~~~
 cost = tf.reduce_mean(-tf.reduce_sum(Y*tf.log(model),axis=1))
 ~~~
