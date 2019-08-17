@@ -38,4 +38,19 @@ L1 = tf.nn.max_pool(L1, ksize=[1,2,2,1], strides=[1,2,2,1],padding='SAME')
 ~~~
 커널 크기를 2*2로 하는 풀링 계층을 만들었다. stride는 2칸으로 했고 역시 위와 같이 padding='SAME'을 주었다.
 
-정확도 98.88%!
+정확도 99.06%!
+
+## 고수준 API
+위 코드를 고오급 API로 컨버팅해봤다.
+
+~~~python
+L1 = tf.layers.conv2d(X,32,[3,3],activation= tf.nn.relu, padding='SAME')
+L1 = tf.layers.max_pooling2d(L1, [2,2], [2,2], padding='SAME')
+
+L3 = tf.contrib.layers.flatten(L2)
+L3 = tf.layers.dense(L3, 256, activation=tf.nn.relu)
+~~~
+
+미쳤.... TF는 갓갓입니다.
+
+공부가 끝나면 layers 함수를 더 연구해봐야겠다.

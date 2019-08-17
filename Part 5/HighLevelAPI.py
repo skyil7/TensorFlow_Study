@@ -9,25 +9,34 @@ Y = tf.placeholder(tf.float32, [None, 10])
 keep_prob = tf.placeholder(tf.float32)
 
 with tf.name_scope('layer1'):
-    W1 = tf.Variable(tf.random_normal([3,3,1,32],stddev=0.01))#3*3 짜리 가중치
-    L1 = tf.nn.conv2d(X,W1,strides=[1,1,1,1], padding='SAME')#2d Convolution
-    L1 = tf.nn.relu(L1)
-    L1 = tf.nn.max_pool(L1, ksize=[1,2,2,1], strides=[1,2,2,1],padding='SAME')
-    #28*28 이미지를 가지는 뉴런이 32개 -> 풀링으로 반감 14*14*32
+    # W1 = tf.Variable(tf.random_normal([3,3,1,32],stddev=0.01))#3*3 짜리 가중치
+    # L1 = tf.nn.conv2d(X,W1,strides=[1,1,1,1], padding='SAME')#2d Convolution
+    # L1 = tf.nn.relu(L1)
+    # L1 = tf.nn.max_pool(L1, ksize=[1,2,2,1], strides=[1,2,2,1],padding='SAME')
+    # #28*28 이미지를 가지는 뉴런이 32개 -> 풀링으로 반감 14*14*32
+
+    L1 = tf.layers.conv2d(X,32,[3,3],activation= tf.nn.relu, padding='SAME')
+    L1 = tf.layers.max_pooling2d(L1, [2,2], [2,2], padding='SAME')
 
 with tf.name_scope('layer2'):
-    W2 = tf.Variable(tf.random_normal([3,3,32,64], stddev=0.01)) #이번엔 64개로 뉴런을 늘리자
-    L2 = tf.nn.conv2d(L1,W2,strides=[1,1,1,1],padding='SAME')
-    L2 = tf.nn.relu(L2)
-    L2 = tf.nn.max_pool(L2, ksize=[1,2,2,1],strides=[1,2,2,1],padding='SAME')
-    #14*14 뉴런을 64개로 늘리고 다시 풀링 -> 7*7*64
+    # W2 = tf.Variable(tf.random_normal([3,3,32,64], stddev=0.01)) #이번엔 64개로 뉴런을 늘리자
+    # L2 = tf.nn.conv2d(L1,W2,strides=[1,1,1,1],padding='SAME')
+    # L2 = tf.nn.relu(L2)
+    # L2 = tf.nn.max_pool(L2, ksize=[1,2,2,1],strides=[1,2,2,1],padding='SAME')
+    # #14*14 뉴런을 64개로 늘리고 다시 풀링 -> 7*7*64
+
+    L2 = tf.layers.conv2d(L1,64,[3,3],activation=tf.nn.relu,padding='SAME')
+    L2 = tf.layers.max_pooling2d(L2, [2,2],[2,2],padding='SAME')
 
 with tf.name_scope('layer3'):
-    W3 = tf.Variable(tf.random_normal([7*7*64, 256],stddev=0.01))#출력을 위해 차원을 줄이고, 256개의 뉴런에 풀커넥션
-    L3 = tf.reshape(L2, [-1, 7*7*64])
-    L3 = tf.matmul(L3,W3)
-    L3 = tf.nn.relu(L3)
-    L3 = tf.nn.dropout(L3, keep_prob)
+    # W3 = tf.Variable(tf.random_normal([7*7*64, 256],stddev=0.01))#출력을 위해 차원을 줄이고, 256개의 뉴런에 풀커넥션
+    # L3 = tf.reshape(L2, [-1, 7*7*64])
+    # L3 = tf.matmul(L3,W3)
+    # L3 = tf.nn.relu(L3)
+    # L3 = tf.nn.dropout(L3, keep_prob)
+
+    L3 = tf.contrib.layers.flatten(L2)
+    L3 = tf.layers.dense(L3, 256, activation=tf.nn.relu)
 
 with tf.name_scope('layer4'):
     W4 = tf.Variable(tf.random_normal([256,10],stddev=0.01))
