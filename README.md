@@ -18,3 +18,10 @@
 - MNIST 예제
 - 과적합 (overfitting)
 - 드롭아웃과 배치 정규화
+
+### 파트 5
+- 합성곱 신경망(CNN)
+- 고수준 API 맛보기
+
+### 파트 6
+- Autoencoder
