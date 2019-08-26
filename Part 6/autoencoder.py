@@ -6,7 +6,7 @@ from tensorflow.examples.tutorials.mnist import input_data
 mnist = input_data.read_data_sets("./mnist/data/", one_hot=True)
 
 # hyperparameters
-learning_late = 0.02
+learning_rate = 0.02
 training_epoch = 80
 batch_size = 100
 n_hidden = 256
@@ -30,7 +30,7 @@ decoder = tf.nn.sigmoid(tf.add(tf.matmul(encoder,W_decode),b_decode))
 cost = tf.reduce_mean(tf.pow(X - decoder, 2))#거리함수(dx 제곱)
 
 #RMSProp Optimizer
-optimizer = tf.train.RMSPropOptimizer(learning_late).minimize(cost)
+optimizer = tf.train.RMSPropOptimizer(learning_rate).minimize(cost)
 
 #Train Session
 init = tf.global_variables_initializer()

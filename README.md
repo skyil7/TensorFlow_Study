@@ -25,3 +25,8 @@
 
 ### 파트 6
 - Autoencoder
+
+## 자주 까먹는 것들
+
+## 읽어볼 것들
+[딥러닝에서 변수 초기화의 중요성](http://www.khshim.com/archives/641?fbclid=IwAR0D4_afHkTirBxbdz6gZFHy-Y9Qa-PZuCI4eTK8vGE91klubWzKp4Go6s0)
