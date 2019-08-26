@@ -26,6 +26,10 @@
 ### 파트 6
 - Autoencoder
 
+### 파트 7
+- GAN
+- MNIST Generator
+
 ## 자주 까먹는 것들
 
 ## 읽어볼 것들

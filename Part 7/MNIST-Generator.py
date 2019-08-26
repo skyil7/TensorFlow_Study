@@ -80,6 +80,7 @@ for epoch in range(total_epoch):
 
     print('Epoch:','%04d' %(epoch+1)+'/'+str(total_epoch), 'D loss: {:.4}'.format(loss_val_D), 'G loss: {:.4}'.format(loss_val_G))
 
+    # 생성된 가짜 이미지 저장
     if epoch == 0 or (epoch+1)%10 ==0:
         sample_size = 10
         noise = get_noise(sample_size, n_noise)
@@ -87,9 +88,11 @@ for epoch in range(total_epoch):
 
         fig, ax = plt.subplots(1, sample_size, figsize=(sample_size, 1))
 
-        #가짜 생성자 결과값 저장
-        # for i in range(sample_size):
-        #     ax[i].set_axis_off()
-        #     ax[i].imshow(np.reshape(samples[i], (28,28)))
+        for i in range(sample_size):
+            ax[i].set_axis_off()
+            ax[i].imshow(np.reshape(samples[i], (28,28)))
 
         plt.savefig('samples/{}.png'.format(str(epoch+1).zfill(3)), bbox_inches='tight')
+        plt.close(fig)
+
+print('최적화 완료')
