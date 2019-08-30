@@ -18,3 +18,6 @@ Recurrent Neural Network(RNN)은 자연어 처리나 음성 인식과 같은 순
 참고로 dynamic_rnn의 sequence_length 옵션을 사용하면 가변 길이 단어를 학습시킬 수 있다.
 
 짧은 단어의 빈 자리만큼 뒷 부분을 0으로 채우고 해당 단어 길이를 계산해 sequence_length로 넘겨주면 된다.
+
+## Seq2Seq
+더 나아가서 Seq2Seq를 배우면 좋다.

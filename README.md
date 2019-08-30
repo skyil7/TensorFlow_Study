@@ -38,6 +38,11 @@
 
 ## 자주 까먹는 것들
 
+## 배워야 하는 것들
+- Seq2Seq, Word2Vec
+- Inception
+- TensorFlow 2
+
 ## 읽어볼 것들
 - [딥러닝에서 변수 초기화의 중요성](http://www.khshim.com/archives/641?fbclid=IwAR0D4_afHkTirBxbdz6gZFHy-Y9Qa-PZuCI4eTK8vGE91klubWzKp4Go6s0)
 - [DCGAN 설명](http://jaejunyoo.blogspot.com/2017/02/deep-convolutional-gan-dcgan-1.html)
